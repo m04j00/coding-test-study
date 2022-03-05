@@ -1,0 +1,11 @@
+package bronze.b5;
+
+public class no5338 {
+    public static void main(String[] args) {
+        System.out.println("       _.-;;-._");
+        System.out.println("'-..-'|   ||   |");
+        System.out.println("'-..-'|_.-;;-._|");
+        System.out.println("'-..-'|   ||   |");
+        System.out.println("'-..-'|_.-''-._|");
+    }
+}
