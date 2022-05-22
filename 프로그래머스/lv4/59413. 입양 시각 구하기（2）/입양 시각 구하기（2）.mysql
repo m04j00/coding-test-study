@@ -1,0 +1,13 @@
+-- 코드를 입력하세요
+with recursive rc as(
+    select 0 as hour
+    union all
+    select hour+1 from rc where hour < 23
+)
+
+SELECT rc.hour, count(HOUR(a.datetime)) count 
+from rc
+left join animal_outs a
+on rc.hour = HOUR(a.datetime)
+group by hour
+order by hour;
