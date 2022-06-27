@@ -1,17 +1,17 @@
-import java.util.HashMap;
+import java.util.HashSet;
 class Solution {
     public int[] solution(int n, String[] words) {
         int[] answer = new int[2];
-        HashMap<String, Integer> map = new HashMap<>();
-        map.put(words[0], 0);
+        HashSet<String> map = new HashSet<>();
+        map.add(words[0]);
 
         for(int i = 1; i < words.length; i++){
             if(
                 words[i-1].substring(words[i-1].length() - 1).equals(
                     words[i].substring(0, 1))
-              && !map.containsKey(words[i])
+              && !map.contains(words[i])
             ) {
-                map.put(words[i], i);
+                map.add(words[i]);
             }
             else{
                 answer[0] = i % n + 1;
