@@ -1,30 +1,26 @@
+import sys
+
+PAIRS = {")": "(", "]": "["}
+
+
+def is_balanced(line: str) -> bool:
+    stack = []
+    for ch in line:
+        if ch in "([":
+            stack.append(ch)
+        elif ch in "])":
+            if not stack or stack.pop() != PAIRS[ch]:
+                return False
+
+    return not stack
+
+
 def main():
-    while True:
-        str = input()
-        if str == ".":
+    for raw in sys.stdin:
+        line = raw.rstrip("\n")
+        if line == ".":
             break
-
-        is_balanced = True
-        stack = []
-
-        for c in str:
-            if c == "(" or c == "[":
-                stack.append(c)
-            elif c == ")":
-                if len(stack) == 0 or stack.pop() != "(":
-                    is_balanced = False
-                    break
-            elif c == "]":
-                if len(stack) == 0 or stack.pop() != "[":
-                    is_balanced = False
-                    break
-            else:
-                continue
-
-        if is_balanced and len(stack) == 0:
-            print("yes")
-        else:
-            print("no")
+        print("yes" if is_balanced(line) else "no")
 
 
 if __name__ == "__main__":
