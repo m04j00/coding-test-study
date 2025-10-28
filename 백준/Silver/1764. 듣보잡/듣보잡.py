@@ -1,22 +1,11 @@
 def main():
     n, m = map(int, input().split())
-    unknown_users = {}
+    never_heard_users = {input() for _ in range(n)}
+    never_seen_users = {input() for _ in range(m)}
+    unknown_uesrs = sorted(never_heard_users & never_seen_users)
 
-    for _ in range(n):
-        user = input()
-        unknown_users[user] = unknown_users[user] + 1 if user in unknown_users else 1
-
-    for _ in range(m):
-        user = input()
-        unknown_users[user] = unknown_users[user] + 1 if user in unknown_users else 1
-
-    result = []
-    for key, value in dict(sorted(unknown_users.items())).items():
-        if value > 1:
-            result.append(key)
-
-    print(len(result))
-    for i in result:
+    print(len(unknown_uesrs))
+    for i in unknown_uesrs:
         print(i)
 
 
