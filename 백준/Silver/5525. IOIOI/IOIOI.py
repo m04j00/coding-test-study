@@ -1,17 +1,24 @@
 def main():
     n = int(input())
     s_len = int(input())
-    s = input()
-    p = "I" + ("OI" * n)
-    p_len = len(p)
-    p_count = 0
+    s = input().strip()
 
-    for i in range(0, s_len - p_len + 1):
-        sliced_s = s[i : i + p_len]
-        if sliced_s == p:
-            p_count += 1
+    count = 0 
+    result = 0
+    i = 0
 
-    print(p_count)
+    while i < s_len - 1:
+        if s[i:i+3] == "IOI":
+            count += 1
+            if count == n:
+                result += 1
+                count -= 1
+            i += 2
+        else:
+            count = 0
+            i += 1
+
+    print(result)
 
 
 if __name__ == "__main__":
